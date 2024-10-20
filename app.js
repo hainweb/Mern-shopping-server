@@ -58,12 +58,16 @@ app.use(session({
     collectionName: 'sessions'
   }),
   cookie: { 
-    maxAge: 6000000, // 100 minutes
-    secure: true, // Ensure 'secure' is true in production
-    httpOnly: false, // Ensure the cookie is only sent over HTTP(S), not accessible via JavaScript
-    sameSite: 'lax' // For cross-origin requests in the browser (adjust as necessary)
+    maxAge: 6000000, 
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true, 
+    sameSite: 'lax' 
   }
 }));
+
+// Now route handling
+app.use('/', userRouter);
+
 
 
 // Database connection
