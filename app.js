@@ -49,7 +49,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
-app.use(session({
+/*app.use(session({
   secret: 'ajinajinshoppingsecretisajin',
   resave: false,
   saveUninitialized: true,
@@ -63,7 +63,20 @@ app.use(session({
     httpOnly: false, 
     sameSite: 'lax' 
   }
+}));  */
+
+app.use(session({
+  secret: 'yourSecretKey',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: false,  // Set to 'true' if using HTTPS
+    domain: 'https://mern-shopping-rpgr.onrender.com',
+    httpOnly: true,
+    sameSite: 'None', // Ensure cross-site cookies work (for third-party cookies)
+  }
 }));
+
 
 // Now route handling
 app.use('/', userRouter);
