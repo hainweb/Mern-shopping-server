@@ -66,14 +66,18 @@ app.use(fileUpload());
 }));  */
 
 app.use(session({
-  secret: 'yourSecretKey',
+  secret: 'ajinajinshoppingsecretisajin',
   resave: false,
   saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
+    collectionName: 'sessions',
+  }),
   cookie: {
-    secure: false,  // Set to 'true' if using HTTPS
-    domain: 'https://mern-shopping-rpgr.onrender.com',
+    secure: true,  // Set to true for HTTPS
     httpOnly: true,
-    sameSite: 'None', // Ensure cross-site cookies work (for third-party cookies)
+    sameSite: 'None',  // Cross-site cookie
+    maxAge: 6000000
   }
 }));
 
