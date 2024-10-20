@@ -54,11 +54,17 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-      mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
-      collectionName: 'sessions'
+    mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
+    collectionName: 'sessions'
   }),
-  cookie: { maxAge: 6000000 }
-})); 
+  cookie: { 
+    maxAge: 6000000, // 100 minutes
+    secure: true, // Ensure 'secure' is true in production
+    httpOnly: true, // Ensure the cookie is only sent over HTTP(S), not accessible via JavaScript
+    sameSite: 'lax' // For cross-origin requests in the browser (adjust as necessary)
+  }
+}));
+
 
 // Database connection
 db.connect((err) => {
