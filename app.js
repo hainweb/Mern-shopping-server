@@ -52,7 +52,7 @@ app.use(fileUpload());
 app.use(session({
   secret: 'ajinajinshoppingsecretisajin',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: MongoStore.create({
       mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
       collectionName: 'sessions'
