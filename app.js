@@ -57,7 +57,7 @@ app.use(session({
       mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
       collectionName: 'sessions'
   }),
-  cookie: { secure: false, maxAge: 6000000 }
+  cookie: { secure: true, maxAge: 6000000 }
 })); 
 
 // Database connection
