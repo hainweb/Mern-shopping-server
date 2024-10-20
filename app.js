@@ -73,12 +73,14 @@ app.use(session({
     mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
     collectionName: 'sessions',
   }),
-  cookie: {
-    secure: false,  // Set to true only in production
-    httpOnly: true,  // Ensures the cookie is only accessible via HTTP (not JavaScript)
-    sameSite: 'None',  // Required for cross-origin cookies
-    maxAge: 6000000  // Adjust as necessary
-  }
+cookie: {
+  secure: true,
+  httpOnly: true,
+  sameSite: 'None',
+  domain: 'https://king-shopping2.onrender.com',  // Set to your app’s domain
+  maxAge: 6000000
+}
+
 }));
 
 
