@@ -52,17 +52,12 @@ app.use(fileUpload());
 app.use(session({
   secret: 'ajinajinshoppingsecretisajin',
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   store: MongoStore.create({
       mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
       collectionName: 'sessions'
   }),
-  cookie: { 
-    secure: process.env.NODE_ENV === 'production', 
-    maxAge: 6000000, 
-    sameSite: 'None',  // Allows cross-origin cookies
-    httpOnly: true     // Prevents JavaScript from accessing the cookie
-  }
+  cookie: { maxAge: 6000000 }
 })); 
 
 // Database connection
