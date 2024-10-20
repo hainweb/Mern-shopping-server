@@ -64,22 +64,7 @@ app.use(fileUpload());
     sameSite: 'lax' 
   }
 }));  */
-
-app.use(session({
-  secret: 'ajinajinshoppingsecretisajin',
-  resave: false,
-  saveUninitialized: true,
-  store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
-    collectionName: 'sessions',
-  }),
-  cookie: {
-    secure: true,  // Set to true for HTTPS
-    httpOnly: true,
-    sameSite: 'None',  // Cross-site cookie
-    maxAge: 6000000
-  }
-}));
+app.use(session({secret:"key",cookie:{maxAge:600000}}))
 
 
 // Now route handling
