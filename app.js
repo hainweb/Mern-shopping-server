@@ -68,13 +68,19 @@ app.use(fileUpload());
 app.use(session({
   secret: 'ajinajinshoppingsecretisajin',
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   store: MongoStore.create({
-      mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
-      collectionName: 'sessions'
+    mongoUrl: 'mongodb+srv://ajinrajeshhillten:5PeT8NxReh3zCwou@shoppingcart.jv3gz.mongodb.net/?retryWrites=true&w=majority&appName=ShoppingCart',
+    collectionName: 'sessions',
   }),
-  cookie: { secure: false }
-})); 
+  cookie: {
+    secure: false,  // Set to true only in production
+    httpOnly: true,  // Ensures the cookie is only accessible via HTTP (not JavaScript)
+    sameSite: 'None',  // Required for cross-origin cookies
+    maxAge: 6000000  // Adjust as necessary
+  }
+}));
+
 
 // Now route handling
 app.use('/', userRouter);
